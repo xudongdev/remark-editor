@@ -1,0 +1,60 @@
+{
+  "name": "remark-editor",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "xudongcc",
+  "homepage": "https://xudongcc.github.io/remark-editor/",
+  "repository": "xudongcc/remark-editor",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "is-hotkey": "^0.1.4",
+    "slate": "^0.44.9",
+    "slate-react": "^0.21.15"
+  },
+  "peerDependencies": {
+    "prismjs": "^1.15.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "gh-pages": "^2.0.1",
+    "prismjs": "^1.15.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "rollup": "^1.1.0",
+    "rollup-plugin-babel": "^4.3.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "predeploy": "cd example && yarn && yarn build",
+    "deploy": "gh-pages -d example/build"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
+}
