@@ -4,8 +4,8 @@
   "description": "",
   "license": "MIT",
   "author": "xudongcc",
-  "homepage": "https://xudongcc.github.io/remark-editor/",
-  "repository": "xudongcc/remark-editor",
+  "homepage": "https://xudongcc.github.io/remark-editor",
+  "repository": "github:xudongcc/remark-editor",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "files": [

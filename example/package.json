@@ -2,6 +2,7 @@
   "name": "example",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://xudongcc.github.io/remark-editor",
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "primer-markdown": "^3.7.12",
