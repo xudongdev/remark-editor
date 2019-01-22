@@ -35,6 +35,7 @@ export default function() {
       const { startBlock } = value;
 
       if (event.key === "Enter" && startBlock.type === "code") {
+        event.preventDefault();
         editor.insertText("\n");
         return;
       }
@@ -49,7 +50,7 @@ export default function() {
       }
     },
     decorateNode(node, editor, next) {
-      if (node.type != "code") return next();
+      if (node.type !== "code") return next();
 
       const lang = node.data.get("lang");
       const grammar = Prism.languages[lang];

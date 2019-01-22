@@ -106,10 +106,13 @@ const schema = {
     // footnoteDefinition: { nodes: [{ match: blockContent }] }
   },
   inlines: {
-    emphasis: { nodes: [{ match: phrasingContent }] },
-    strong: { nodes: [{ match: phrasingContent }] },
-    delete: { nodes: [{ match: phrasingContent }] },
-    inlineCode: {},
+    emphasis: { text: string => string, nodes: [{ match: phrasingContent }] },
+    strong: { text: string => string, nodes: [{ match: phrasingContent }] },
+    delete: { text: string => string, nodes: [{ match: phrasingContent }] },
+    inlineCode: {
+      text: string => string,
+      nodes: [{ match: [{ object: "text" }] }]
+    },
     break: { isVoid: true },
     link: { nodes: [{ match: staticPhrasingContent }] },
     image: { isVoid: true }

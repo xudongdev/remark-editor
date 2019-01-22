@@ -26,6 +26,8 @@ export default function renderNode(props, editor, next) {
       return <em {...attributes}>{children}</em>;
     case "strong":
       return <strong {...attributes}>{children}</strong>;
+    case "delete":
+      return <del {...attributes}>{children}</del>;
     case "inlineCode":
       return <code {...attributes}>{children}</code>;
     case "thematicBreak":
@@ -37,9 +39,7 @@ export default function renderNode(props, editor, next) {
           <br />
         </span>
       );
-    case "temp":
-      return <div {...attributes}>{children}</div>;
     default:
-      return next();
+      next();
   }
 }

@@ -17,7 +17,15 @@ function changeNode(node) {
   if (node.type === "code") {
     return {
       type: node.type,
-      ...node.data.toJSON(),
+      lang: node.data.get("lang"),
+      meta: node.data.get("meta"),
+      value: node.text
+    };
+  }
+
+  if (node.type === "inlineCode") {
+    return {
+      type: node.type,
       value: node.text
     };
   }

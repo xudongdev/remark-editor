@@ -1,7 +1,16 @@
 import isHotkey from "is-hotkey";
 
-function getBlockProp(chars) {
-  switch (chars) {
+const inlineShortcuts = [
+  { type: "inlineCode", mark: "`" },
+  { type: "delete", mark: "~~" },
+  { type: "strong", mark: "**" },
+  { type: "strong", mark: "__" },
+  { type: "emphasis", mark: "*" },
+  { type: "emphasis", mark: "_" }
+];
+
+function getBlockProp(mark) {
+  switch (mark) {
     case "1.":
       return {
         type: "list",
@@ -50,7 +59,7 @@ class MarkdownShortcutsPlugin {
 
   onSpace(event, editor, next) {
     const { value } = editor;
-    const { selection, startBlock } = value;
+    const { selection, startBlock, startText } = value;
 
     if (selection.isExpanded) return next();
 
@@ -64,6 +73,63 @@ class MarkdownShortcutsPlugin {
           editor.moveStartToStartOfBlock(startBlock).delete();
         })
         .setBlocks(blockProp);
+    }
+
+    const wrapInlineTypes = [];
+
+    let text = startText.text,
+      start = true,
+      startIndex,
+      endIndex;
+
+    while (start) {
+      start = false;
+
+      inlineShortcuts.some(shortcut => {
+        const { type, mark } = shortcut;
+        const firstIndex = text.indexOf(mark);
+        const lastIndex = text.lastIndexOf(mark);
+
+        if (firstIndex + mark.length < lastIndex) {
+          if (lastIndex + mark.length !== text.length) {
+            start = true;
+            return;
+          }
+
+          if (typeof startIndex === "undefined") {
+            startIndex = firstIndex;
+            endIndex = lastIndex + mark.length;
+          } else if (type === "inlineCode") {
+            return true;
+          }
+
+          text = `${text.substr(0, firstIndex)}${text.substr(
+            firstIndex + mark.length,
+            lastIndex - firstIndex - mark.length
+          )}`;
+
+          wrapInlineTypes.push(type);
+
+          if (startIndex === firstIndex && type === "inlineCode") {
+            return true;
+          }
+        }
+      });
+    }
+
+    if (wrapInlineTypes.length > 0) {
+      const markLength = (startText.text.length - text.length) / 2;
+
+      event.preventDefault();
+
+      editor
+        .removeTextByKey(startText.key, endIndex - markLength, markLength)
+        .removeTextByKey(startText.key, startIndex, markLength)
+        .moveAnchorBackward(endIndex - startIndex - markLength - markLength);
+
+      wrapInlineTypes.forEach(type => editor.wrapInline(type));
+
+      return editor.moveToEnd();
     }
 
     next();
