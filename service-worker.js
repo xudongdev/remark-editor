@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/remark-editor/precache-manifest.cc68409aa8584b7a7c3a16342debd9ec.js"
+  "/remark-editor/precache-manifest.9b7e8b0c06b35a81c990514f01d42714.js"
 );
 
 workbox.clientsClaim();
