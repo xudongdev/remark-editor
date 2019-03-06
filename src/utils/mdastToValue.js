@@ -4,12 +4,26 @@ import { Value } from "slate";
 const inlineTypes = ["emphasis", "strong", "inlineCode"];
 
 function changeNode(node) {
-  if (node.type === "html") {
-    return null;
-  }
+  return [
+    {
+      object: inlineTypes.indexOf(node.type) < 0 ? "block" : "inline",
+      type: node.type,
+      data: omit(node, ["type", "children", "position"]) || {},
+      nodes: node.value
+        ? [{ object: "text", text: node.value }]
+        : node.children
+        ? changeNodes(node.children)
+        : undefined
+    }
+  ];
+}
 
-  if (node.type === "text") {
-    return {
+function changeText(node) {
+  // 清除零宽空格
+  if (node.value === "\u200B") return [];
+
+  return [
+    {
       object: "text",
       leaves: [
         {
@@ -18,43 +32,39 @@ function changeNode(node) {
           text: node.value
         }
       ]
-    };
-  }
+    }
+  ];
+}
 
-  if (node.type === "break") {
-    return { object: "inline", type: "break" };
-  }
+function changeBreak() {
+  return [{ object: "inline", type: "break" }];
+}
 
-  const result = {};
-  result.object = inlineTypes.indexOf(node.type) < 0 ? "block" : "inline";
-  result.type = node.type;
-  result.data = omit(node, ["type", "children", "position"]) || {};
-
-  if (node.value) {
-    result.nodes = [{ object: "text", text: node.value }];
-  } else if (node.children) {
-    result.nodes = node.children.map(changeNode).filter(n => n);
-  }
-
-  return result;
+function changeNodes(nodes) {
+  let output = [];
+  nodes.forEach(node => {
+    output = [
+      ...output,
+      ...(node => {
+        if (node.type === "html") return [];
+        if (node.type === "text") return changeText(node);
+        if (node.type === "break") return changeBreak(node);
+        return changeNode(node);
+      })(node)
+    ];
+  });
+  return output;
 }
 
 export default function(mdast) {
-  const json = {
+  const value = Value.fromJSON({
     object: "value",
     document: {
       object: "document",
       data: {},
-      nodes: []
+      nodes: mdast.children ? changeNodes(mdast.children) : []
     }
-  };
+  });
 
-  if (mdast.children) {
-    json.document.nodes = mdast.children.map(changeNode).filter(n => n);
-  }
-
-  // console.log("***", json);
-  // console.log("###", Value.fromJSON(json).toJSON());
-
-  return Value.fromJSON(json);
+  return value;
 }
