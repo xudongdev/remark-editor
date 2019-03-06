@@ -66,7 +66,8 @@ class MarkdownShortcutsPlugin {
     const blockProp = getBlockProp(
       startBlock.text.slice(0, selection.start.offset).replace(/\s*/g, "")
     );
-    if (blockProp) {
+
+    if (blockProp && startBlock.nodes.size <= 1) {
       event.preventDefault();
       return editor
         .withoutMerging(() => {
