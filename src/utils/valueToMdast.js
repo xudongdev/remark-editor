@@ -70,7 +70,7 @@ function changeNodes(nodes) {
       ...(node => {
         if (node.type === "break") return changeBreak(node, nodes);
         if (node.object === "text") return changeText(node);
-        if (node.type === "code") return changeCode();
+        if (node.type === "code") return changeCode(node);
         if (node.type === "inlineCode") return changeInlineCode(node);
         if (node.type === "paragraph") return changeParagraph(node);
         return changeNode(node);
