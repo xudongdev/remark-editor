@@ -1,15 +1,17 @@
 {
-  "main.css": "/remark-editor/static/css/main.a14fa4b2.chunk.css",
-  "main.js": "/remark-editor/static/js/main.f2f84b89.chunk.js",
-  "main.js.map": "/remark-editor/static/js/main.f2f84b89.chunk.js.map",
-  "static/css/1.45b25be0.chunk.css": "/remark-editor/static/css/1.45b25be0.chunk.css",
-  "static/js/1.0c0e9ea2.chunk.js": "/remark-editor/static/js/1.0c0e9ea2.chunk.js",
-  "static/js/1.0c0e9ea2.chunk.js.map": "/remark-editor/static/js/1.0c0e9ea2.chunk.js.map",
-  "runtime~main.js": "/remark-editor/static/js/runtime~main.e84a9313.js",
-  "runtime~main.js.map": "/remark-editor/static/js/runtime~main.e84a9313.js.map",
-  "static/css/main.a14fa4b2.chunk.css.map": "/remark-editor/static/css/main.a14fa4b2.chunk.css.map",
-  "static/css/1.45b25be0.chunk.css.map": "/remark-editor/static/css/1.45b25be0.chunk.css.map",
-  "index.html": "/remark-editor/index.html",
-  "precache-manifest.21aca907964343d9ca20f3203a1a6463.js": "/remark-editor/precache-manifest.21aca907964343d9ca20f3203a1a6463.js",
-  "service-worker.js": "/remark-editor/service-worker.js"
+  "files": {
+    "main.css": "/remark-editor/static/css/main.67ee5ad8.chunk.css",
+    "main.js": "/remark-editor/static/js/main.1937cf79.chunk.js",
+    "main.js.map": "/remark-editor/static/js/main.1937cf79.chunk.js.map",
+    "runtime~main.js": "/remark-editor/static/js/runtime~main.af2b1ba6.js",
+    "runtime~main.js.map": "/remark-editor/static/js/runtime~main.af2b1ba6.js.map",
+    "static/css/2.2fff2021.chunk.css": "/remark-editor/static/css/2.2fff2021.chunk.css",
+    "static/js/2.7305317c.chunk.js": "/remark-editor/static/js/2.7305317c.chunk.js",
+    "static/js/2.7305317c.chunk.js.map": "/remark-editor/static/js/2.7305317c.chunk.js.map",
+    "index.html": "/remark-editor/index.html",
+    "precache-manifest.de97a4db9c7f7b94a574b722fcf19944.js": "/remark-editor/precache-manifest.de97a4db9c7f7b94a574b722fcf19944.js",
+    "service-worker.js": "/remark-editor/service-worker.js",
+    "static/css/2.2fff2021.chunk.css.map": "/remark-editor/static/css/2.2fff2021.chunk.css.map",
+    "static/css/main.67ee5ad8.chunk.css.map": "/remark-editor/static/css/main.67ee5ad8.chunk.css.map"
+  }
 }
