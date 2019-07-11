@@ -1,3 +1,10 @@
+html,
+body,
+#root,
+.app {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,13 +13,14 @@ body {
 
 .app {
   display: flex;
+  flex-direction: column;
 }
 
 .editor,
 .markdown,
 .preview {
   flex: 1;
-  height: 100vh;
+  height: 100%;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -20,7 +28,5 @@ body {
 .markdown {
   outline: none;
   resize: none;
-  border: 1px solid #eaecef;
-  border-top: 0;
-  border-bottom: 0;
+  border: none;
 }

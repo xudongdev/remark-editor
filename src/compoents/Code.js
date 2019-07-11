@@ -1,5 +1,15 @@
 import React from "react";
+import styled from "styled-components";
 import config from "../config";
+
+const LanguageSelect = styled.select`
+  transition: 0.3s;
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
 
 export default class Code extends React.Component {
   handleChange = event => {
@@ -34,13 +44,13 @@ export default class Code extends React.Component {
             lineHeight: "1em"
           }}
         >
-          <select value={lang} onChange={this.handleChange}>
+          <LanguageSelect value={lang} onChange={this.handleChange}>
             {config.prism.languages.map(language => (
               <option key={language.value} value={language.value}>
                 {language.title}
               </option>
             ))}
-          </select>
+          </LanguageSelect>
         </div>
       </div>
     );

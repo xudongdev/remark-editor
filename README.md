@@ -1,6 +1,6 @@
 # remark-editor
 
-一个基于语法树（mdast）的富文本 Markdown 编辑器。[在线示例](https://xudongcc.github.io/remark-editor/)
+一个基于语法树（mdast）的富文本 Markdown 编辑器。[在线示例](https://hxddev.github.io/remark-editor/)
 
 ## 安装
 
@@ -28,4 +28,4 @@ class App extends Component {
 
 ## 开源协议
 
-MIT © [xudongcc](https://github.com/xudongcc)
+MIT © [hxddev](https://github.com/hxddev)
