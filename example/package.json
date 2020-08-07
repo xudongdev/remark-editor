@@ -10,7 +10,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "immutable": "^4.0.0-rc.12",
     "primer-markdown": "^4.0.0",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.21.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-scripts": "^3.0.1",
